@@ -5,14 +5,14 @@ using Windows.UI.Xaml;
 
 
 namespace XamlActions.ViewServices {
-    public class DispatcherHelper : IDispatcher {
+    public class DispatcherWinRT : IDispatcher {
         private static CoreDispatcher _coreDispatcher;
 
         public static CoreDispatcher Dispatcher {
             get {
                 if (_coreDispatcher == null) {
                     if (Window.Current.Dispatcher == null) {
-                        Debug.WriteLine("The Dispatcher is null. Try setting the Dispatcher calling 'DispatcherHelper.Dispatcher = Window.Current.Dispatcher;' in your App.xaml");
+                        Debug.WriteLine("The Dispatcher is null. Try setting the Dispatcher calling 'DispatcherWinRT.Dispatcher = Window.Current.Dispatcher;' in your App.xaml");
                         return null;
                     }
                     _coreDispatcher = Window.Current.Dispatcher;

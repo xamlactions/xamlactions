@@ -45,7 +45,7 @@ namespace XamlActions.DI {
     		_instanceRegistrations.Add(typeof (T), instance);
     	}
 
-        public void Register<T>(Func<T> functionToCreateObject) where T : class {
+        public void Register<T>(Func<object> functionToCreateObject) where T : class {
             if (AlreadyRegistered<T>()) {
                 throw new DuplicateRegistrationException("Only one registration per type is allowed");
             }
@@ -56,7 +56,7 @@ namespace XamlActions.DI {
             return Resolve(typeof (TIntf)) as TIntf;
         }
 
-    	private object Resolve(Type type) {
+    	public object Resolve(Type type) {
             if (!_typeRegistrations.ContainsKey(type)) {
                 if (_instanceRegistrations.ContainsKey(type)) {
                     return _instanceRegistrations[type];
@@ -79,13 +79,13 @@ namespace XamlActions.DI {
         }
 
         private void EnsureConcreteClass(Type type) {
-            if(type.GetTypeInfo().IsAbstract || type.GetTypeInfo().IsInterface) {
+            if(type.IsAbstract || type.IsInterface) {
                 throw new NotSupportedException("Cannot find registration for type " + type.FullName + ".");
             }
         }
 
     	private static ConstructorInfo GetMostSpecificConstructor(Type type) {
-            ConstructorInfo[] constructors = type.GetTypeInfo().DeclaredConstructors.ToArray();
+            ConstructorInfo[] constructors = type.GetConstructors().ToArray();
     		ConstructorInfo mostSpecificConstructor = null;
     		foreach (var c in constructors) {
     			if (mostSpecificConstructor == null ||

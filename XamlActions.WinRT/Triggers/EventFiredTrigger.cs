@@ -4,6 +4,7 @@ using XamlActions.Reflection;
 
 namespace XamlActions.Triggers {
     public class EventFiredTrigger : Trigger {
+
         public string Event {
             get { return (string) GetValue(EventProperty); }
             set { SetValue(EventProperty, value); }
@@ -19,11 +20,12 @@ namespace XamlActions.Triggers {
 
         public EventFiredTrigger() {
             DependencyPropertyMonitor.MonitorForChanges(this, "DataContext", o => RegisterEvent());
+
         }
 
         private void RegisterEvent() {
             if (Event == null) return;
-            EventHelper.RegisterEvent(ParentFrameworkElement, Event, (s, a) => {
+            EventHelperWinRT.Default.RegisterEvent(ParentFrameworkElement, Event, (s, a) => {
                 foreach (TriggerAction action in this) {
                     action.StartAction();
                 }

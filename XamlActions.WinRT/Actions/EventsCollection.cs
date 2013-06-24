@@ -10,7 +10,6 @@ using XamlActions.Reflection;
     using Windows.UI.Xaml.Data;
     using XamlActions;
     using XamlActions.Actions;
-    using XamlActions.Reflection;
 #else
     using System.Windows;
     using System.Windows.Data;
@@ -61,7 +60,7 @@ namespace XamlActions.Actions {
 			if (maps == null) return;
 			foreach (Map map in maps) {
 				Map localMap = map;
-                EventHelper.RegisterEvent(_parentFrameworkElement, map.Event, (s, a) => EventFired(localMap, a));
+                EventHelper.Default.RegisterEvent(_parentFrameworkElement, map.Event, (s, a) => EventFired(localMap, a));
 			}
 		}
 		
@@ -69,7 +68,7 @@ namespace XamlActions.Actions {
 			if (maps == null) return;
 			foreach (Map map in maps) {
 				Map localMap = map;
-                EventHelper.UnregisterEvent(_parentFrameworkElement, map.Event, (s, a) => EventFired(localMap, a));
+                EventHelper.Default.UnregisterEvent(_parentFrameworkElement, map.Event, (s, a) => EventFired(localMap, a));
 			}
 		}
 

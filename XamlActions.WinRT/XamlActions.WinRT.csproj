@@ -109,7 +109,6 @@
     <Compile Include="Actions\Events.cs" />
     <Compile Include="Actions\EventsCollection.cs" />
     <Compile Include="Actions\Map.cs" />
-    <Compile Include="Actions\ReflectorException.cs" />
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\CustomColorConverter.cs" />
     <Compile Include="Converters\OpacityConverter.cs" />
@@ -133,7 +132,7 @@
     <Compile Include="ViewServices\DesignModeChecker.cs" />
     <Compile Include="ViewServices\DialogService.cs" />
     <Compile Include="ViewServices\NavigationService.cs" />
-    <Compile Include="ViewServices\DispatcherHelper.cs" />
+    <Compile Include="ViewServices\DispatcherWinRT.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

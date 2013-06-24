@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
-using Windows.UI.Popups;
+#if NETFX_CORE
+    using Windows.UI.Popups;
+#endif
 
 namespace XamlActions.ViewServices {
     public class DialogService : IDialogService {
@@ -14,13 +16,17 @@ namespace XamlActions.ViewServices {
             _dispatcher.Run(() => ShowMessageAsync(message));
         }
 
-        private async void ShowMessageAsync(string message) {
+        
         #if NETFX_CORE
+        private async void ShowMessageAsync(string message) {
             var dialog = new MessageDialog(message);
             await dialog.ShowAsync();
-        #else 
-            MessageBox.Show(message);
-        #endif
         }
+        #else
+        private void ShowMessageAsync(string message) {
+            MessageBox.Show(message);
+        }
+#endif
+        
     }
 }

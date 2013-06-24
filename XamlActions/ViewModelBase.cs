@@ -50,7 +50,7 @@ namespace XamlActions {
 
         protected override void RaisePropertyChanged<T>(System.Linq.Expressions.Expression<Func<T>> propertyExpression) {
             Action action = () => RaisePropertyChangedToAvoidCs1911(propertyExpression);
-            if (NotifyUsingDispatcher && !IsInDesignMode()) {
+            if (NotifyUsingDispatcher && _dispatcher != null && !IsInDesignMode()) {
                 _dispatcher.Run(action);
                 return;
             }

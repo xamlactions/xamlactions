@@ -1,54 +1,97 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace XamlActions.Reflection {
     public class Reflector {
+        public static BindingFlags NoRestrictions = BindingFlags.Public |
+                                                    BindingFlags.NonPublic |
+                                                    BindingFlags.Static |
+                                                    BindingFlags.Instance;
+
+        public static BindingFlags NoRestrictionsIgnoreCase = NoRestrictions | BindingFlags.IgnoreCase;
 
         public static string[] ListAllFields(Type type) {
-            return type.GetRuntimeFields().Select(x => x.Name).ToArray();
+            FieldInfo[] fields = type.GetFields(NoRestrictions);
+
+            var resp = new string[fields.Length];
+            for (int i = 0; i < resp.Length; i++) {
+                resp[i] = fields[i].Name;
+            }
+            return resp;
         }
 
         public static string[] ListAllProperties(Type type) {
-            return type.GetRuntimeProperties().Select(x => x.Name).ToArray();
+            PropertyInfo[] props = type.GetProperties(NoRestrictions);
+
+            var resp = new string[props.Length];
+            for (int i = 0; i < resp.Length; i++) {
+                resp[i] = props[i].Name;
+            }
+            return resp;
+        }
+
+        public static string[] ListAllPublicProperties(Type type) {
+            PropertyInfo[] props = type.GetProperties(BindingFlags.Public |
+                                                      BindingFlags.Instance);
+
+            var resp = new string[props.Length];
+            for (int i = 0; i < resp.Length; i++) {
+                resp[i] = props[i].Name;
+            }
+            return resp;
         }
 
         public static bool IsNull(object obj, string fieldName) {
-            return obj.GetType().GetRuntimeField(fieldName).GetValue(obj) == null;
+            Type type = obj.GetType();
+            FieldInfo field = type.GetField(fieldName, NoRestrictions);
+            return (field.GetValue(obj) == null);
         }
 
         public static void Set(object obj, string fieldName, object value) {
-            obj.GetType().GetRuntimeField(fieldName).SetValue(obj, value);
+            Type type = obj.GetType();
+            FieldInfo field = type.GetField(fieldName, NoRestrictions);
+            field.SetValue(obj, value);
         }
 
         public static T Get<T>(object obj, string fieldName) {
-            var value = obj.GetType().GetRuntimeField(fieldName).GetValue(obj);
-            return (value == null) ? default(T) : (T)value;
+            Type type = obj.GetType();
+            FieldInfo field = type.GetField(fieldName, NoRestrictions);
+            return (T)field.GetValue(obj);
         }
 
         public static object Get(object obj, string fieldName) {
-            return obj.GetType().GetRuntimeField(fieldName).GetValue(obj);
+            Type type = obj.GetType();
+            FieldInfo field = type.GetField(fieldName, NoRestrictions);
+
+            return field.GetValue(obj);
         }
 
         public static Type GetFieldType(Type type, string fieldName) {
-            return type.GetRuntimeField(fieldName).FieldType;
+            FieldInfo info = type.GetField(fieldName, NoRestrictions);
+            return info.FieldType;
         }
 
-        public static Type GetPropertyType(Type type, string propertyName) {
-            return type.GetRuntimeProperty(propertyName).PropertyType;
+        public static Type GetPropertyType(Type type, string fieldName) {
+            PropertyInfo info = type.GetProperty(fieldName, NoRestrictions);
+            return info.PropertyType;
         }
 
         public static void SetProperty(object obj, string propertyName, object value) {
-            obj.GetType().GetRuntimeProperty(propertyName).SetValue(obj, value);
+            Type type = obj.GetType();
+            PropertyInfo property = type.GetProperty(propertyName, NoRestrictions);
+            property.SetValue(obj, value, null);
         }
 
         public static object GetProperty(object obj, string propertyName) {
-            return obj.GetType().GetRuntimeProperty(propertyName).GetValue(obj);
+            Type type = obj.GetType();
+            PropertyInfo property = type.GetProperty(propertyName, NoRestrictions);
+            return property.GetValue(obj, null);
         }
 
         public static bool HasProperty(Type type, string propertyName) {
-            return type.GetRuntimeProperty(propertyName) != null;
+            PropertyInfo info = type.GetProperty(propertyName, NoRestrictions);
+            return info != null;
         }
 
         public static object CallMethod(object obj, string methodName, params object[] parameters) {
@@ -65,10 +108,22 @@ namespace XamlActions.Reflection {
         }
 
         public static MethodInfo GetMethodInfo(Type type, string methodName, int numParameters) {
-            return type.GetRuntimeMethods().FirstOrDefault(x => x.Name.ToLower().Equals(methodName.ToLower()) && x.GetParameters().Count() == numParameters);
+            MethodInfo[] methods = type.GetMethods(NoRestrictionsIgnoreCase);
+            return methods.FirstOrDefault(p => p.Name == methodName &&
+                                               p.GetParameters().Count() == numParameters);
         }
 
+        public static void RaiseEvent(object obj, string eventName, params object[] eventArgs) {
+            var eventDelagate = (MulticastDelegate)Get(obj, eventName);
+            Delegate[] delegates = eventDelagate.GetInvocationList();
+            foreach (Delegate dlg in delegates) {
+                dlg.Method.Invoke(dlg.Target, eventArgs);
+            }
+        }
 
-       
+        private static EventInfo GetEventInfo(object obj, string eventName) {
+            Type type = obj.GetType();
+            return type.GetEvent(eventName);
+        }
     }
 }
