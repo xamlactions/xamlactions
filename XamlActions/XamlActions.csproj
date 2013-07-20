@@ -37,6 +37,9 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="DI\ActivationException.cs" />
     <Compile Include="DI\DefaultRegistration.cs" />
     <Compile Include="DI\DuplicateRegistrationException.cs" />

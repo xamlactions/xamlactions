@@ -50,6 +50,9 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\xamlactions.winrt\actions\Events.cs">
       <Link>Actions\Events.cs</Link>
     </Compile>
