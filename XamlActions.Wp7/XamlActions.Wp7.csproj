@@ -74,6 +74,7 @@
     <Compile Include="..\XamlActions.Wp8\ViewServices\NavigationService.cs">
       <Link>ViewServices\NavigationService.cs</Link>
     </Compile>
+    <Compile Include="Actions\ApplicationBarAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\EventHelperWp7.cs" />
   </ItemGroup>
