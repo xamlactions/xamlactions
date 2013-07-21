@@ -1,4 +1,5 @@
 cd XamlActions.Nuget\Bin\
+del XamlActions.nupkg
 rename XamlActions.* XamlActions.nupkg
 attrib +r +s XamlActions.nupkg
 del XamlActions*.*

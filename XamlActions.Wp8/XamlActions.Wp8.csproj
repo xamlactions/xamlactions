@@ -101,13 +101,12 @@
     <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
       <Link>ViewServices\DialogService.cs</Link>
     </Compile>
-    <Compile Include="..\XamlActions.Wp7\Actions\ApplicationBarAction.cs">
-      <Link>Actions\ApplicationBarAction.cs</Link>
-    </Compile>
+    <Compile Include="Actions\ApplicationBarAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\PhotoChooserWp.cs" />
     <Compile Include="ViewServices\DesignModeChecker.cs" />
     <Compile Include="ViewServices\DispatcherWinPhone.cs" />
-    <Compile Include="ViewServices\NavigationService.cs" />
+    <Compile Include="ViewServices\Navigator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamlActions\XamlActions.csproj">
@@ -115,6 +114,7 @@
       <Name>XamlActions</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
