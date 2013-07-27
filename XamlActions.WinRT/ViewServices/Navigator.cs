@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace XamlActions.ViewServices {
-    public class NavigationService : INavigationService {
+    public class Navigator : INavigator {
         private static Dictionary<string, Type> _mapping = new Dictionary<string, Type>();
 
         private readonly IDispatcher _dispatcher;
@@ -14,13 +14,13 @@ namespace XamlActions.ViewServices {
             get { return _mainFrame ?? (_mainFrame = Window.Current.Content as Frame); }
         }
 
-        public NavigationService(IDispatcher dispatcher) {
+        public Navigator(IDispatcher dispatcher) {
             _dispatcher = dispatcher;
         }
 
         public void NavigateTo(string viewName) {
             if (!_mapping.ContainsKey(viewName)) {
-                throw new KeyNotFoundException("Type for view " + viewName + " not found. Try registering before using NavigationService.RegisterView");
+                throw new KeyNotFoundException("Type for view " + viewName + " not found. Try registering before using Navigator.RegisterView");
             }
             _dispatcher.Run(() => MainFrame.Navigate(_mapping[viewName]));
         }

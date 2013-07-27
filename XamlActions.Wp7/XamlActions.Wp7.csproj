@@ -65,14 +65,20 @@
     <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
       <Link>ViewServices\DialogService.cs</Link>
     </Compile>
+    <Compile Include="..\XamlActions.Wp8\Actions\ApplicationBarAction.cs">
+      <Link>Actions\ApplicationBarAction.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.Wp8\Tasks\PhotoChooserWp.cs">
+      <Link>Tasks\PhotoChooserWp.cs</Link>
+    </Compile>
     <Compile Include="..\XamlActions.Wp8\ViewServices\DesignModeChecker.cs">
       <Link>ViewServices\DesignModeChecker.cs</Link>
     </Compile>
     <Compile Include="..\XamlActions.Wp8\ViewServices\DispatcherWinPhone.cs">
       <Link>ViewServices\DispatcherWinPhone.cs</Link>
     </Compile>
-    <Compile Include="..\XamlActions.Wp8\ViewServices\NavigationService.cs">
-      <Link>ViewServices\NavigationService.cs</Link>
+    <Compile Include="..\XamlActions.Wp8\ViewServices\Navigator.cs">
+      <Link>ViewServices\Navigator.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\EventHelperWp7.cs" />

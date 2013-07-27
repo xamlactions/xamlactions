@@ -19,7 +19,7 @@ namespace XamlActions.DI {
             ServiceLocator.Register<IDialogService>(PlatformResolver.ResolveImplementation<IDialogService>());
             ServiceLocator.Register<IDispatcher>(PlatformResolver.ResolveImplementation<IDispatcher>());
             ServiceLocator.Register<IDesignModeChecker>(PlatformResolver.ResolveImplementation<IDesignModeChecker>());
-            ServiceLocator.Register<INavigationService>(PlatformResolver.ResolveImplementation<INavigationService>());
+            ServiceLocator.Register<INavigator>(PlatformResolver.ResolveImplementation<INavigator>());
         }
     }
 }

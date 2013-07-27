@@ -1,5 +1,5 @@
 ﻿namespace XamlActions.ViewServices {
-    public interface INavigationService {
+    public interface INavigator {
         void NavigateTo(string viewName);
         void GoBack();
     }

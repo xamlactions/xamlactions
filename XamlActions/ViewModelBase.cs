@@ -7,14 +7,14 @@ namespace XamlActions {
     public class ViewModelBase : ObservableObject {
         private bool _isBusy;
         private bool _notifyUsingDispatcher = true;
-        private static INavigationService _navigationService;
+        private static INavigator _navigator;
         private static IDialogService _dialogService;
         private static IDispatcher _dispatcher;
         private static IDesignModeChecker _designModeChecker;
 
         static ViewModelBase() {
             DefaultRegistration.EnsureRegistered();
-            _navigationService = ServiceLocator.Default.Resolve<INavigationService>();
+            _navigator = ServiceLocator.Default.Resolve<INavigator>();
             _dialogService = ServiceLocator.Default.Resolve<IDialogService>();
             _dispatcher = ServiceLocator.Default.Resolve<IDispatcher>();
             _designModeChecker = ServiceLocator.Default.Resolve<IDesignModeChecker>();
@@ -33,9 +33,9 @@ namespace XamlActions {
             set { _notifyUsingDispatcher = value; }
         }
 
-        public INavigationService NavigationService {
-            get { return _navigationService; }
-            set { _navigationService = value; }
+        public INavigator Navigator {
+            get { return _navigator; }
+            set { _navigator = value; }
         }
 
         public IDialogService DialogService {

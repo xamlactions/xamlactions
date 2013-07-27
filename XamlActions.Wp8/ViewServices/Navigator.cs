@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 namespace XamlActions.ViewServices {
-    public class NavigationService : INavigationService {
+    public class Navigator : INavigator {
         private static Dictionary<string, Uri> _mapping = new Dictionary<string, Uri>();
 
         private readonly IDispatcher _dispatcher;
@@ -14,13 +14,13 @@ namespace XamlActions.ViewServices {
             get { return _mainFrame ?? (_mainFrame = Application.Current.RootVisual as Frame); }
         }
 
-        public NavigationService(IDispatcher dispatcher) {
+        public Navigator(IDispatcher dispatcher) {
             _dispatcher = dispatcher;
         }
 
         public void NavigateTo(string viewName) {
             if (!_mapping.ContainsKey(viewName)) {
-                throw new KeyNotFoundException("Uri for view " + viewName + " not found. Try registering before using NavigationService.RegisterView");
+                throw new KeyNotFoundException("Uri for view " + viewName + " not found. Try registering before using Navigator.RegisterView");
             }
             _dispatcher.Run(() => MainFrame.Navigate(_mapping[viewName]));
         }
