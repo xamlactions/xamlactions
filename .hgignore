@@ -4,3 +4,6 @@ syntax: glob
 */Bin/*
 *.user
 *.suo
+_UpgradeReport_Files/*
+UpgradeLog.*
+packages/*

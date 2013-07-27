@@ -20,6 +20,7 @@ namespace XamlActions {
             else {
                 CallOnlyInRuntime();
             }
+            CallLast();
         }
 
         public abstract void CallFirst();
@@ -27,7 +28,7 @@ namespace XamlActions {
         public abstract void CallOnlyInDesigntime();
         public abstract void CallLast();
 
-        public void ResolveAllPropertiesWithPrefixViewModel() {
+        public void ResolveAllPropertiesWithViewModelAsPrefix() {
             IEnumerable<string> names = Reflector.ListAllProperties(GetType()).Where(x => x.EndsWith("ViewModel"));
             foreach (string name in names) {
                 Type vmType = Reflector.GetPropertyType(GetType(), name);
