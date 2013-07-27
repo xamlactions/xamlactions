@@ -11,7 +11,7 @@ namespace XamlActions.Tasks {
                 var task = new PhotoChooserTask();
                 task.ShowCamera = true;
                 if (Height > 0) task.PixelHeight = Height;
-                if (Width > 0) task.PixelHeight = Width;
+                if (Width > 0) task.PixelWidth = Width;
 
                 task.Completed += (sender, result) => {
                     if (result.TaskResult != TaskResult.OK) {
