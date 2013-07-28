@@ -21,29 +21,41 @@ namespace XamlActions.DI {
             _delegateRegistrations = new Dictionary<Type, Func<object>>();
         }
 
-        public void Register<T>(Type type) {
-            if (IsRegistered<T>())
-                throw new DuplicateRegistrationException("Only one registration per type is allowed");
+        public void Register<T>(Type type, bool overrideIfAlreadyRegistered = false) {
+            EnsureRegistrationRule(typeof(T), overrideIfAlreadyRegistered);
             _typeRegistrations.Add(typeof(T), type);
         }
 
-        public void Register<T, TClass>()
-            where T : class
-            where TClass : T {
-            Register<T>(typeof (TClass));
+        private void EnsureRegistrationRule(Type typeKey, bool forceRegister) {
+            if (IsRegistered(typeKey)) {
+                if (forceRegister) {
+                    Unregister(typeKey);
+                }
+                else {
+                    throw new DuplicateRegistrationException("Only one registration per type is allowed");
+                }
+            }
         }
 
-        public void Register<T>(T instance) {
-    		if (IsRegistered<T>()) {
-                throw new DuplicateRegistrationException("Only one registration per type is allowed");
-    		}
+        private void Unregister(Type type) {
+            _instanceRegistrations.Remove(type);
+            _typeRegistrations.Remove(type);
+            _delegateRegistrations.Remove(type);
+        }
+
+        public void Register<T, TClass>(bool overrideIfAlreadyRegistered)
+            where T : class
+            where TClass : T {
+                Register<T>(typeof(TClass), overrideIfAlreadyRegistered);
+        }
+
+        public void Register<T>(T instance, bool overrideIfAlreadyRegistered = false) {
+            EnsureRegistrationRule(typeof(T), overrideIfAlreadyRegistered);
     		_instanceRegistrations.Add(typeof (T), instance);
     	}
 
-        public void Register<T>(Func<object> functionToCreateObject) where T : class {
-            if (IsRegistered<T>()) {
-                throw new DuplicateRegistrationException("Only one registration per type is allowed");
-            }
+        public void Register<T>(Func<object> functionToCreateObject, bool overrideIfAlreadyRegistered = false) where T : class {
+            EnsureRegistrationRule(typeof(T), overrideIfAlreadyRegistered);
             _delegateRegistrations.Add(typeof(T), functionToCreateObject);
         }
 
@@ -91,8 +103,8 @@ namespace XamlActions.DI {
     		return mostSpecificConstructor;
     	}
 
-    	public bool IsRegistered<T>() {
-            return _instanceRegistrations.ContainsKey(typeof (T)) || _typeRegistrations.ContainsKey(typeof (T));
+        public bool IsRegistered(Type typeKey) {
+            return _instanceRegistrations.ContainsKey(typeKey) || _typeRegistrations.ContainsKey(typeKey) || _delegateRegistrations.ContainsKey(typeKey);
         }
     }
 }

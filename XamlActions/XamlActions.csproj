@@ -54,6 +54,7 @@
     <Compile Include="Reflection\Reflector.cs" />
     <Compile Include="Tasks\IPhotoChooserTask.cs" />
     <Compile Include="Tasks\Photo.cs" />
+    <Compile Include="Tasks\PhotoChooserTaskStub.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModelLocatorBase.cs" />
     <Compile Include="ViewServices\DispatcherHelper.cs" />
