@@ -8,5 +8,6 @@ namespace XamlActions.DI {
         void Register<T>(T instance);
         void Register<T>(Type type);
         void Register<T>(Func<object> functionToCreateObject) where T : class;
+        bool IsRegistered<T>();
     }
 }

@@ -7,3 +7,4 @@ syntax: glob
 _UpgradeReport_Files/*
 UpgradeLog.*
 packages/*
+*.orig

@@ -12,12 +12,7 @@ namespace XamlActions.DI {
         private static IServiceLocator _instance;
 
         public static IServiceLocator Default {
-            get {
-                if(_instance == null) {
-                    _instance = new ServiceLocator();
-                }
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new ServiceLocator()); }
         }
 
         private ServiceLocator() {
@@ -27,7 +22,7 @@ namespace XamlActions.DI {
         }
 
         public void Register<T>(Type type) {
-            if (AlreadyRegistered<T>())
+            if (IsRegistered<T>())
                 throw new DuplicateRegistrationException("Only one registration per type is allowed");
             _typeRegistrations.Add(typeof(T), type);
         }
@@ -39,14 +34,14 @@ namespace XamlActions.DI {
         }
 
         public void Register<T>(T instance) {
-    		if (AlreadyRegistered<T>()) {
+    		if (IsRegistered<T>()) {
                 throw new DuplicateRegistrationException("Only one registration per type is allowed");
     		}
     		_instanceRegistrations.Add(typeof (T), instance);
     	}
 
         public void Register<T>(Func<object> functionToCreateObject) where T : class {
-            if (AlreadyRegistered<T>()) {
+            if (IsRegistered<T>()) {
                 throw new DuplicateRegistrationException("Only one registration per type is allowed");
             }
             _delegateRegistrations.Add(typeof(T), functionToCreateObject);
@@ -96,7 +91,7 @@ namespace XamlActions.DI {
     		return mostSpecificConstructor;
     	}
 
-    	private bool AlreadyRegistered<T>() {
+    	public bool IsRegistered<T>() {
             return _instanceRegistrations.ContainsKey(typeof (T)) || _typeRegistrations.ContainsKey(typeof (T));
         }
     }

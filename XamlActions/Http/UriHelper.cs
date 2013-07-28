@@ -9,7 +9,7 @@ namespace XamlActions.Http {
             _builder = new UriBuilder(url);
         }
 
-        public void AddPath(string path) {
+        public UriHelper AddPath(string path) {
             if (!_builder.Path.EndsWith("/")) {
                 _builder.Path += "/";
             }
@@ -17,13 +17,15 @@ namespace XamlActions.Http {
                 path = path.Substring(1);
             }
             _builder.Path += path;
+            return this;
         }
 
-        public void AddParam(string key, object value) {
+        public UriHelper AddParam(string key, object value) {
             if (_params != "") {
                 _params += "&";
             }
             _params += key + "=" + value;
+            return this;
         }
 
         public Uri Build() {
