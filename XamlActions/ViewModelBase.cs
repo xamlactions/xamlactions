@@ -7,6 +7,7 @@ namespace XamlActions {
     public class ViewModelBase : ObservableObject {
         private bool _isBusy;
         private bool _notifyUsingDispatcher = true;
+        private string _busyText;
         private static INavigator _navigator;
         private static IDialogService _dialogService;
         private static IDispatcher _dispatcher;
@@ -25,6 +26,14 @@ namespace XamlActions {
             set {
                 _isBusy = value;
                 RaisePropertyChanged(() => IsBusy);
+            }
+        }
+
+        public string BusyText {
+            get { return _busyText; }
+            set {
+                _busyText = value;
+                RaisePropertyChanged(() => BusyText);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using XamlActions.Reflection;
+﻿using XamlActions.IO;
+using XamlActions.Reflection;
 using XamlActions.ViewServices;
 
 namespace XamlActions.DI {
@@ -20,6 +21,7 @@ namespace XamlActions.DI {
             ServiceLocator.Register<IDispatcher>(PlatformResolver.ResolveImplementation<IDispatcher>());
             ServiceLocator.Register<IDesignModeChecker>(PlatformResolver.ResolveImplementation<IDesignModeChecker>());
             ServiceLocator.Register<INavigator>(PlatformResolver.ResolveImplementation<INavigator>());
+            ServiceLocator.Register<IAppSettings>(PlatformResolver.ResolveImplementation<IAppSettings>());
         }
     }
 }
