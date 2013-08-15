@@ -10,6 +10,7 @@ namespace XamlActions.IO {
 
         public void Set(string key, object value) {
             IsolatedStorageSettings.ApplicationSettings[key] = value;
+            IsolatedStorageSettings.ApplicationSettings.Save();
         }
     }
 }
