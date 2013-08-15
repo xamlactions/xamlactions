@@ -1,6 +1,6 @@
 ﻿using Windows.Storage;
 
-namespace XamlActions.IO {
+namespace XamlActions.Data {
     public class AppSettings : IAppSettings {
         private ApplicationDataContainer _container;
 

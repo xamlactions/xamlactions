@@ -101,8 +101,8 @@
     <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
       <Link>ViewServices\DialogService.cs</Link>
     </Compile>
-    <Compile Include="..\XamlActions.Wp7\IO\AppSettings.cs">
-      <Link>IO\AppSettings.cs</Link>
+    <Compile Include="..\XamlActions.Wp7\Data\AppSettings.cs">
+      <Link>Data\AppSettings.cs</Link>
     </Compile>
     <Compile Include="Actions\ApplicationBarAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

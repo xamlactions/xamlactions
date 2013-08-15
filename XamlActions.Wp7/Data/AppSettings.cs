@@ -1,6 +1,6 @@
 ﻿using System.IO.IsolatedStorage;
 
-namespace XamlActions.IO {
+namespace XamlActions.Data {
     public class AppSettings : IAppSettings {
         public object Get(string key) {
             return IsolatedStorageSettings.ApplicationSettings.Contains(key)
