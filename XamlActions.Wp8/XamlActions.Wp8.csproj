@@ -95,14 +95,14 @@
     <Compile Include="..\XamlActions.WinRT\Actions\Map.cs">
       <Link>Actions\Map.cs</Link>
     </Compile>
-    <Compile Include="..\XamlActions.WinRT\Reflection\EventHelper.cs">
-      <Link>Reflection\EventHelper.cs</Link>
-    </Compile>
     <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
       <Link>ViewServices\DialogService.cs</Link>
     </Compile>
     <Compile Include="..\XamlActions.Wp7\Data\AppSettings.cs">
       <Link>Data\AppSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.Wp7\Reflection\EventHelperWp.cs">
+      <Link>Reflection\EventHelperWp.cs</Link>
     </Compile>
     <Compile Include="Actions\ApplicationBarAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

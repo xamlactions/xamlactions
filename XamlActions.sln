@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{526C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Common", "Sample.Common\Sample.Common.csproj", "{9D5DBA6B-1D26-4BFD-B60A-425983DBC446}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Wp71", "Sample.Wp71\Sample.Wp71.csproj", "{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,18 @@ Global
 		{9D5DBA6B-1D26-4BFD-B60A-425983DBC446}.Release|ARM.ActiveCfg = Release|Any CPU
 		{9D5DBA6B-1D26-4BFD-B60A-425983DBC446}.Release|x64.ActiveCfg = Release|Any CPU
 		{9D5DBA6B-1D26-4BFD-B60A-425983DBC446}.Release|x86.ActiveCfg = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|x64.ActiveCfg = Release|Any CPU
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,5 +163,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746} = {526CD474-49B3-4FDE-83F9-00FD2C612C44}
 		{9D5DBA6B-1D26-4BFD-B60A-425983DBC446} = {526CD474-49B3-4FDE-83F9-00FD2C612C44}
+		{B885B820-EEAC-48D8-88FF-9E21C2D5BC92} = {526CD474-49B3-4FDE-83F9-00FD2C612C44}
 	EndGlobalSection
 EndGlobal

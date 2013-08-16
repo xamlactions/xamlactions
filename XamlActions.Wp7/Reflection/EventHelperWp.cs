@@ -2,9 +2,9 @@
 using System.Reflection;
 
 namespace XamlActions.Reflection {
-    public class EventHelperWp7 : IEventHelper {
+    public class EventHelperWp : IEventHelper {
 
-        public static IEventHelper Default = new EventHelperWp7();
+        public static IEventHelper Default = new EventHelperWp();
 
         public void RegisterEvent(object obj, string eventName, Action<object, object> eventHandler) {
             EventInfo eventInfo = GetEventInfo(obj, eventName);

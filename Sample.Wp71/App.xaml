@@ -1,23 +1,19 @@
-﻿<Application
-    x:Class="Sample.Wp8.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Application 
+    x:Class="Sample.Wp71.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:viewModels="clr-namespace:Sample.Common.ViewModels;assembly=Sample.Common"
-    xmlns:viewModels1="clr-namespace:Sample.Common.ViewModels">
+    xmlns:viewModels="clr-namespace:Sample.Common.ViewModels;assembly=Sample.Common">
 
     <!--Application Resources-->
     <Application.Resources>
-        <local:LocalizedStrings xmlns:local="clr-namespace:Sample.Wp8" x:Key="LocalizedStrings"/>
-    
         <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->
-        <shell:PhoneApplicationService
-            Launching="Application_Launching" Closing="Application_Closing"
+        <shell:PhoneApplicationService 
+            Launching="Application_Launching" Closing="Application_Closing" 
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>
     </Application.ApplicationLifetimeObjects>
 
