@@ -29,6 +29,10 @@ namespace XamlActions {
             }
         }
 
+        public bool IsNotBusy {
+            get { return !_isBusy; }
+        }
+
         public string BusyText {
             get { return _busyText; }
             set {
