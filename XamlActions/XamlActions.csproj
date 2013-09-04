@@ -39,6 +39,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Crypto\Md5.cs" />
     <Compile Include="DI\ActivationException.cs" />
     <Compile Include="DI\DefaultRegistration.cs" />
     <Compile Include="DI\DuplicateRegistrationException.cs" />
