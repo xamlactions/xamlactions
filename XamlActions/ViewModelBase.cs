@@ -21,7 +21,7 @@ namespace XamlActions {
             _designModeChecker = ServiceLocator.Default.Resolve<IDesignModeChecker>();
         }
 
-        public bool IsBusy {
+        public virtual bool IsBusy {
             get { return _isBusy; }
             set {
                 _isBusy = value;

@@ -1,6 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20930.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{60E807F5-63E3-408D-BEB9-90DD42E56729}"
+	ProjectSection(SolutionItems) = preProject
+		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{526CD474-49B3-4FDE-83F9-00FD2C612C44}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlActions.WinRT", "XamlActions.WinRT\XamlActions.WinRT.csproj", "{47F32F18-18FC-4DA5-92D7-9C2968A1B747}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlActions.Wp8", "XamlActions.Wp8\XamlActions.Wp8.csproj", "{F0E27FB2-CC37-4456-964B-40A0F93500D4}"
@@ -17,16 +26,9 @@ Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "XamlActions.Nuget", "XamlAc
 		{F0E27FB2-CC37-4456-964B-40A0F93500D4} = {F0E27FB2-CC37-4456-964B-40A0F93500D4}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{60E807F5-63E3-408D-BEB9-90DD42E56729}"
-	ProjectSection(SolutionItems) = preProject
-		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlActions.Tests", "XamlActions.Tests\XamlActions.Tests.csproj", "{855404C8-E74D-41E7-B0BE-80DFFD09018A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Wp8", "Sample.Wp8\Sample.Wp8.csproj", "{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{526CD474-49B3-4FDE-83F9-00FD2C612C44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Common", "Sample.Common\Sample.Common.csproj", "{9D5DBA6B-1D26-4BFD-B60A-425983DBC446}"
 EndProject
@@ -116,7 +118,6 @@ Global
 		{855404C8-E74D-41E7-B0BE-80DFFD09018A}.Release|x86.ActiveCfg = Release|Any CPU
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|ARM.ActiveCfg = Debug|ARM
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|ARM.Build.0 = Debug|ARM
 		{2448C6F5-B6D2-42C8-B4CA-0B8BF896B746}.Debug|ARM.Deploy.0 = Debug|ARM

@@ -13,9 +13,10 @@ namespace XamlActions.DI {
 
         public static IServiceLocator Default {
             get { return _instance ?? (_instance = new ServiceLocator()); }
+            set { _instance = value; }
         }
 
-        private ServiceLocator() {
+        public ServiceLocator() {
             _typeRegistrations = new Dictionary<Type, Type>();
             _instanceRegistrations = new Dictionary<Type, object>();
             _delegateRegistrations = new Dictionary<Type, Func<object>>();
@@ -64,15 +65,15 @@ namespace XamlActions.DI {
         }
 
     	public object Resolve(Type type) {
+            if (_delegateRegistrations.ContainsKey(type)) {
+                return _delegateRegistrations[type].Invoke();
+            }
             if (!_typeRegistrations.ContainsKey(type)) {
                 if (_instanceRegistrations.ContainsKey(type)) {
                     return _instanceRegistrations[type];
                 }
                 EnsureConcreteClass(type);
                 _typeRegistrations.Add(type, type);
-            }
-            else if (_delegateRegistrations.ContainsKey(type)) {
-                return _delegateRegistrations[type].Invoke();
             }
             var createdType = _typeRegistrations[type];
 
