@@ -11,11 +11,13 @@ namespace XamlActions.ViewServices {
         public static CoreDispatcher Dispatcher {
             get {
                 if (_coreDispatcher == null) {
-                    if (Window.Current.Dispatcher == null) {
+                    try {
+                        _coreDispatcher = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
+                    }
+                    catch {
                         Debug.WriteLine("The Dispatcher is null. Try setting the Dispatcher calling 'DispatcherWinRT.Dispatcher = Window.Current.Dispatcher;' in your App.xaml");
                         return null;
                     }
-                    _coreDispatcher = Window.Current.Dispatcher;
                 }
                 return _coreDispatcher;
             }

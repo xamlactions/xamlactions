@@ -123,6 +123,13 @@
     <Compile Include="Data\AppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\EventHelper.cs" />
+    <Compile Include="Sensors\Fakes\LightSensorFake.cs" />
+    <Compile Include="Sensors\GyrometerImpl.cs" />
+    <Compile Include="Sensors\AcceleromenterImpl.cs" />
+    <Compile Include="Sensors\CompassImpl.cs" />
+    <Compile Include="Sensors\LightSensorImpl.cs" />
+    <Compile Include="Sensors\Simulator\AccelerometerReportSerializer.cs" />
+    <Compile Include="Sensors\Simulator\AccelerometerSimulator.cs" />
     <Compile Include="Tasks\PhotoChooserWinRt.cs" />
     <Compile Include="Triggers\DataTrigger.cs" />
     <Compile Include="Triggers\EventFiredTrigger.cs" />

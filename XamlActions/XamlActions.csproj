@@ -59,6 +59,12 @@
     <Compile Include="Reflection\PlatformResolver.cs" />
     <Compile Include="Reflection\ReflectorException.cs" />
     <Compile Include="Reflection\Reflector.cs" />
+    <Compile Include="Sensors\GyrometerReport.cs" />
+    <Compile Include="Sensors\AccelerometerReport.cs" />
+    <Compile Include="Sensors\CompassReport.cs" />
+    <Compile Include="Sensors\ISensor.cs" />
+    <Compile Include="Sensors\ISensorReport.cs" />
+    <Compile Include="Sensors\LightSensorReport.cs" />
     <Compile Include="Tasks\IPhotoChooserTask.cs" />
     <Compile Include="Tasks\Photo.cs" />
     <Compile Include="Tasks\PhotoChooserTaskStub.cs" />
