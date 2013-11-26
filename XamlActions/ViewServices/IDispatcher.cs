@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace XamlActions.ViewServices {
     public interface IDispatcher {
-        void Run(Action action);
+        Task Run(Action action);
     }
 }

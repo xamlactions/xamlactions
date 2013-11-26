@@ -98,15 +98,11 @@
     <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
       <Link>ViewServices\DialogService.cs</Link>
     </Compile>
-    <Compile Include="..\XamlActions.Wp7\Data\AppSettings.cs">
-      <Link>Data\AppSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\XamlActions.Wp7\Reflection\EventHelperWp.cs">
-      <Link>Reflection\EventHelperWp.cs</Link>
-    </Compile>
     <Compile Include="Actions\ApplicationBarAction.cs" />
     <Compile Include="Converters\BoolToValueConverter.cs" />
+    <Compile Include="Data\AppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\EventHelperWp.cs" />
     <Compile Include="Tasks\PhotoChooserWp.cs" />
     <Compile Include="ViewServices\DesignModeChecker.cs" />
     <Compile Include="ViewServices\DispatcherWinPhone.cs" />

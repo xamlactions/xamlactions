@@ -17,7 +17,7 @@ namespace XamlActions.ViewServices {
         }
 
         
-        #if NETFX_CORE
+#if NETFX_CORE
         private async void ShowMessageAsync(string message) {
             var dialog = new MessageDialog(message);
             await dialog.ShowAsync();

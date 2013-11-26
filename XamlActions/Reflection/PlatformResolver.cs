@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace XamlActions.Reflection {
     public static class PlatformResolver {
-        private static string[] _platforms = new[] {"WinRT", "Wp8", "Wp7"};
+        private static string[] _platforms = {"WinRT", "Wp8"};
         private static Assembly _assemblyTarget;
 
         public static Type ResolveImplementation(Type interfaceType) {

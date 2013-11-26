@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -21,12 +22,12 @@ namespace XamlActions.ViewServices {
             set { _coreDispatcher = value; }
         }
 
-        public void Run(Action action) {
+        public async Task Run(Action action) {
             if (Dispatcher == null || Dispatcher.CheckAccess()) {
                 action.Invoke();
                 return;
             }
-            Dispatcher.BeginInvoke(action);
+            await Task.Run(() => Dispatcher.BeginInvoke(action));
         }
     }
 }
