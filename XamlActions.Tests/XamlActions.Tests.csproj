@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Crypto\Md5Tests.cs" />
     <Compile Include="DI\ServiceLocatorTests.cs" />
+    <Compile Include="MediatorTests.cs" />
     <Compile Include="UriHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
