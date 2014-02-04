@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -25,8 +26,8 @@ namespace XamlActions.ViewServices {
             _dispatcher.Run(() => MainFrame.Navigate(_mapping[viewName]));
         }
 
-        public Type GetCurrentViewType() {
-            return _mainFrame == null ? null : _mainFrame.CurrentSourcePageType;
+        public string GetCurrentViewKey() {
+            return _mainFrame == null ? null : _mapping.FirstOrDefault(x => x.Value == _mainFrame.CurrentSourcePageType).Key;
         }
 
         public void GoBack() {
