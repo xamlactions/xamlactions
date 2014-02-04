@@ -1,5 +1,4 @@
 ﻿using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace XamlActions.Converters {
@@ -17,6 +16,4 @@ namespace XamlActions.Converters {
             return value != null && value.Equals(TrueValue);
         }
     }
-
-    public class BoolToVisibilityConverter : BoolToValueConverter<Visibility> { }
 }
