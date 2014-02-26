@@ -117,9 +117,12 @@
     <Compile Include="Actions\Map.cs" />
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\CustomColorConverter.cs" />
+    <Compile Include="Converters\FalseIsVisibleConverter.cs" />
     <Compile Include="Converters\OpacityConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\ToStringConverter.cs" />
+    <Compile Include="Converters\TrueIsVisibleConverter.cs" />
+    <Compile Include="DataTemplateSelector.cs" />
     <Compile Include="DependencyObjectCollection.cs" />
     <Compile Include="Helpers\DependencyPropertyMonitor.cs" />
     <Compile Include="Helpers\Focus.cs" />
@@ -134,6 +137,7 @@
     <Compile Include="Sensors\Simulator\AccelerometerReportSerializer.cs" />
     <Compile Include="Sensors\Simulator\AccelerometerSimulator.cs" />
     <Compile Include="Tasks\PhotoChooserWinRt.cs" />
+    <Compile Include="Tasks\ShareTask.cs" />
     <Compile Include="Triggers\DataTrigger.cs" />
     <Compile Include="Triggers\EventFiredTrigger.cs" />
     <Compile Include="Triggers\FrameworkElementCollection.cs" />

@@ -68,8 +68,10 @@
     <Compile Include="Sensors\ISensorReport.cs" />
     <Compile Include="Sensors\LightSensorReport.cs" />
     <Compile Include="Tasks\IPhotoChooserTask.cs" />
+    <Compile Include="Tasks\IShareTask.cs" />
     <Compile Include="Tasks\Photo.cs" />
     <Compile Include="Tasks\PhotoChooserTaskStub.cs" />
+    <Compile Include="Tasks\ShareItem.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModelLocatorBase.cs" />
     <Compile Include="ViewServices\DispatcherHelper.cs" />
