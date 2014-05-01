@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
 namespace XamlActions.Triggers {
@@ -14,7 +9,7 @@ namespace XamlActions.Triggers {
 
         public void SetDependencyObject(FrameworkElement parentFrameworkElement) {
             _parentFrameworkElement = parentFrameworkElement;
-            if(_parentFrameworkElement.DataContext == null) {
+            if (_parentFrameworkElement.DataContext == null) {
                 _parentFrameworkElement.Loaded += ParentFrameworkElementLoaded;
             }
             CollectionChanged += OnCollectionChanged;

@@ -104,7 +104,9 @@
     <Compile Include="Data\AppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\EventHelperWp.cs" />
+    <Compile Include="Tasks\EmailTask.cs" />
     <Compile Include="Tasks\PhotoChooserWp.cs" />
+    <Compile Include="Tasks\ReviewTaskWp.cs" />
     <Compile Include="ViewServices\DesignModeChecker.cs" />
     <Compile Include="ViewServices\DispatcherWinPhone.cs" />
     <Compile Include="ViewServices\Navigator.cs" />

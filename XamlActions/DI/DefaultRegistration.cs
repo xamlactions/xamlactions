@@ -1,5 +1,6 @@
 ﻿using XamlActions.Data;
 using XamlActions.Reflection;
+using XamlActions.Tasks;
 using XamlActions.ViewServices;
 
 namespace XamlActions.DI {
@@ -22,6 +23,10 @@ namespace XamlActions.DI {
             ServiceLocator.Register<IDesignModeChecker>(PlatformResolver.ResolveImplementation<IDesignModeChecker>());
             ServiceLocator.Register<INavigator>(PlatformResolver.ResolveImplementation<INavigator>());
             ServiceLocator.Register<IAppSettings>(PlatformResolver.ResolveImplementation<IAppSettings>());
+
+            ServiceLocator.Register<IPhotoChooserTask>(PlatformResolver.ResolveImplementation<IPhotoChooserTask>());
+            ServiceLocator.Register<IReviewTask>(PlatformResolver.ResolveImplementation<IReviewTask>());
+            ServiceLocator.Register<IEmailTask>(PlatformResolver.ResolveImplementation<IEmailTask>());
         }
     }
 }
