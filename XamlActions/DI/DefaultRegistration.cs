@@ -18,15 +18,22 @@ namespace XamlActions.DI {
             if(_isRegistered) return;
             _isRegistered = true;
 
-            ServiceLocator.Register<IDialogService>(PlatformResolver.ResolveImplementation<IDialogService>());
-            ServiceLocator.Register<IDispatcher>(PlatformResolver.ResolveImplementation<IDispatcher>());
-            ServiceLocator.Register<IDesignModeChecker>(PlatformResolver.ResolveImplementation<IDesignModeChecker>());
-            ServiceLocator.Register<INavigator>(PlatformResolver.ResolveImplementation<INavigator>());
-            ServiceLocator.Register<IAppSettings>(PlatformResolver.ResolveImplementation<IAppSettings>());
+            RegisterIfFound<IDialogService>();
+            RegisterIfFound<IDispatcher>();
+            RegisterIfFound<IDesignModeChecker>();
+            RegisterIfFound<INavigator>();
+            RegisterIfFound<IAppSettings>();
+            RegisterIfFound<IPhotoChooserTask>();
+            RegisterIfFound<IReviewTask>();
+            RegisterIfFound<IEmailTask>();
+        }
 
-            ServiceLocator.Register<IPhotoChooserTask>(PlatformResolver.ResolveImplementation<IPhotoChooserTask>());
-            ServiceLocator.Register<IReviewTask>(PlatformResolver.ResolveImplementation<IReviewTask>());
-            ServiceLocator.Register<IEmailTask>(PlatformResolver.ResolveImplementation<IEmailTask>());
+        private static void RegisterIfFound<T>() {
+            var type = PlatformResolver.ResolveImplementation<T>();
+            if (type == null) {
+                return;
+            }
+            ServiceLocator.Register<T>(type);
         }
     }
 }

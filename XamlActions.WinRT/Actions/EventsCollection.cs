@@ -73,7 +73,7 @@ namespace XamlActions.Actions {
 		}
 
 		public void EventFired(Map map, object eventArgs) {
-            //Without this line we can have exceptions in design mode
+            //Without this line we have exceptions in design mode
 #if SILVERLIGHT 
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 #endif

@@ -6,3 +6,11 @@ XamlActions.WinRT/obj/
 XamlActions.Wp8/obj/
 packages/
 XamlActions/obj/
+XamlActions.Wpf/obj/
+XamlActions.Universal/obj/
+Sample.Wpf/obj/
+Sample.WinRt/obj/
+Sample.Universal/Sample.Universal.WindowsPhone/bin/
+Sample.Universal/Sample.Universal.WindowsPhone/obj/
+Sample.Universal/Sample.Universal.Windows/obj/
+Sample.Universal/Sample.Universal.Windows/bin/

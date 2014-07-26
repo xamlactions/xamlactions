@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBF23AF7-495D-46A7-BD1C-CCEAE1C4BE76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XamlActions</RootNamespace>
+    <AssemblyName>XamlActions.Universal</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\XamlActions\XamlActions.csproj">
+      <Project>{cd06a259-7aff-42a3-aade-c896a4e423d1}</Project>
+      <Name>XamlActions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\XamlActions.WinRT\Actions\Events.cs">
+      <Link>Actions\Events.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Actions\EventsCollection.cs">
+      <Link>Actions\EventsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Actions\Map.cs">
+      <Link>Actions\Map.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\BoolToValueConverter.cs">
+      <Link>Converters\BoolToValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\CustomColorConverter.cs">
+      <Link>Converters\CustomColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\FalseIsVisibleConverter.cs">
+      <Link>Converters\FalseIsVisibleConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\OpacityConverter.cs">
+      <Link>Converters\OpacityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\StringFormatConverter.cs">
+      <Link>Converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\ToStringConverter.cs">
+      <Link>Converters\ToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Converters\TrueIsVisibleConverter.cs">
+      <Link>Converters\TrueIsVisibleConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\DataTemplateSelector.cs">
+      <Link>DataTemplateSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Data\AppSettings.cs">
+      <Link>Data\AppSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\DependencyObjectCollection.cs">
+      <Link>DependencyObjectCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Helpers\DependencyPropertyMonitor.cs">
+      <Link>Helpers\DependencyPropertyMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Helpers\Focus.cs">
+      <Link>Helpers\Focus.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Reflection\EventHelper.cs">
+      <Link>Reflection\EventHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\AcceleromenterImpl.cs">
+      <Link>Sensors\AcceleromenterImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\CompassImpl.cs">
+      <Link>Sensors\CompassImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\Fakes\LightSensorFake.cs">
+      <Link>Sensors\Fakes\LightSensorFake.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\GyrometerImpl.cs">
+      <Link>Sensors\GyrometerImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\LightSensorImpl.cs">
+      <Link>Sensors\LightSensorImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\Simulator\AccelerometerReportSerializer.cs">
+      <Link>Sensors\Simulator\AccelerometerReportSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Sensors\Simulator\AccelerometerSimulator.cs">
+      <Link>Sensors\Simulator\AccelerometerSimulator.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Tasks\PhotoChooserWinRt.cs">
+      <Link>Tasks\PhotoChooserWinRt.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Tasks\ShareTask.cs">
+      <Link>Tasks\ShareTask.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\DataTrigger.cs">
+      <Link>Triggers\DataTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\EventFiredTrigger.cs">
+      <Link>Triggers\EventFiredTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\FrameworkElementCollection.cs">
+      <Link>Triggers\FrameworkElementCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\Interaction.cs">
+      <Link>Triggers\Interaction.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\PropertyChangedTrigger.cs">
+      <Link>Triggers\PropertyChangedTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\StartStoryboardAction.cs">
+      <Link>Triggers\StartStoryboardAction.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\StartStoryBoardOnValue.cs">
+      <Link>Triggers\StartStoryBoardOnValue.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\Trigger.cs">
+      <Link>Triggers\Trigger.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\TriggerAction.cs">
+      <Link>Triggers\TriggerAction.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\Triggers\TriggersCollection.cs">
+      <Link>Triggers\TriggersCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\ViewServices\DesignModeChecker.cs">
+      <Link>ViewServices\DesignModeChecker.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\ViewServices\DialogService.cs">
+      <Link>ViewServices\DialogService.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\ViewServices\DispatcherWinRT.cs">
+      <Link>ViewServices\DispatcherWinRT.cs</Link>
+    </Compile>
+    <Compile Include="..\XamlActions.WinRT\ViewServices\Navigator.cs">
+      <Link>ViewServices\Navigator.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

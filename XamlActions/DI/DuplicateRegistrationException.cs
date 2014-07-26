@@ -2,8 +2,13 @@
 
 namespace XamlActions.DI {
     public class DuplicateRegistrationException : Exception {
-        public DuplicateRegistrationException() { }
-        public DuplicateRegistrationException(string message) : base(message) { }
-        public DuplicateRegistrationException(string message, Exception inner) : base(message, inner) { }
+        public Type AlreadyRegisteredType { get; set; }
+
+        public DuplicateRegistrationException(Type typeKey) : this(typeKey, null, null) { }
+        public DuplicateRegistrationException(Type typeKey, string message) : this(typeKey, message, null) { }
+
+        public DuplicateRegistrationException(Type typeKey, string message = "Type already registered", Exception inner = null) : base(message, inner) {
+            AlreadyRegisteredType = typeKey;
+        }
     }
 }

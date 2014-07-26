@@ -8,6 +8,12 @@ using XamlActions;
 namespace Sample.Common.ViewModels {
     public class MainViewModel : ViewModelBase {
 
+        public string Title { get; set; }
+
+        public MainViewModel() {
+            Title = "MainViewModel";
+        }
+
         public void Loaded() {
             
         }

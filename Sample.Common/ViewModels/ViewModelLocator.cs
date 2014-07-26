@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using XamlActions;
+﻿using XamlActions;
 
 namespace Sample.Common.ViewModels {
     public class ViewModelLocator : ViewModelLocatorBase {

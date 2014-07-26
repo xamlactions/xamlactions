@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 #if NETFX_CORE
     using Windows.UI.Xaml;
 #else 
@@ -14,7 +15,7 @@ namespace XamlActions.Actions {
             typeof(Events),
             null);
 
-		public static EventsCollection GetMappings(DependencyObject obj) {
+	    public static EventsCollection GetMappings(DependencyObject obj) {
 		    var eventsCollection = obj.GetValue(MappingsProperty) as EventsCollection;
             if(eventsCollection == null) {
                 eventsCollection = new EventsCollection();

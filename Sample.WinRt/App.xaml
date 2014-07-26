@@ -1,0 +1,10 @@
+﻿<Application
+    x:Class="Sample.WinRt.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sample.WinRt"
+    xmlns:viewModels="using:Sample.Common.ViewModels">
+    <Application.Resources>
+        <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
+    </Application.Resources>
+</Application>

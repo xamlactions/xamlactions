@@ -22,7 +22,7 @@ namespace XamlActions.ViewServices {
             var dialog = new MessageDialog(message);
             await dialog.ShowAsync();
         }
-        #else
+#else
         private void ShowMessageAsync(string message) {
             MessageBox.Show(message);
         }

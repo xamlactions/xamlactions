@@ -20,7 +20,7 @@ namespace XamlActions.Actions {
             DependencyProperty.Register("WithParam",
                                         typeof(object),
                                         typeof(Map),
-                                        new PropertyMetadata(DependencyProperty.UnsetValue, OnWithParamChanged));
+                                        new PropertyMetadata(null, OnWithParamChanged));
 
         private static void OnWithParamChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             var map = d as Map;
@@ -50,7 +50,7 @@ namespace XamlActions.Actions {
             DependencyProperty.Register("OfDataContext",
                                         typeof(object),
                                         typeof(Map),
-                                        new PropertyMetadata(DependencyProperty.UnsetValue, OnDataContextChanged));
+                                        new PropertyMetadata(null, OnDataContextChanged));
 
         private static void OnDataContextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
         }

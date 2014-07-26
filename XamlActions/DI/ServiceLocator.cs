@@ -33,7 +33,7 @@ namespace XamlActions.DI {
                     Unregister(typeKey);
                 }
                 else {
-                    throw new DuplicateRegistrationException("Only one registration per type is allowed");
+                    throw new DuplicateRegistrationException(typeKey, "Only one registration per type is allowed");
                 }
             }
         }
