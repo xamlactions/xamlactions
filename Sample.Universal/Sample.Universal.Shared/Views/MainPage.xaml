@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Sample.Universal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sample.Universal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:actions="using:XamlActions.Actions"
+    xmlns:triggers="using:XamlActions.Triggers"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Storyboard x:Name="Rotate">
+            <DoubleAnimation Duration="0:0:0.5" 
+							 To="{Binding Angle}" 
+							 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" 
+							 Storyboard.TargetName="ControlToRotate" 
+							 d:IsOptimized="True"/>
+        </Storyboard>
+    </Page.Resources>
+    <Grid>
+        <Button Content="rotate" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <actions:Events.Mappings>
+                <actions:Map Event="PointerExited" ToMethod="Rotate" />
+            </actions:Events.Mappings>
+        </Button>
+        <Grid x:Name="ControlToRotate" Width="200" Height="200">
+            <Rectangle Width="100" Height="100" Fill="Blue" HorizontalAlignment="Left"></Rectangle>
+            <Rectangle Width="100" Height="100" Fill="Red" HorizontalAlignment="Right"></Rectangle>
+
+            <Grid.RenderTransform>
+                <CompositeTransform Rotation="0" CenterX="50" CenterY="50"/>
+            </Grid.RenderTransform>
+
+            <Grid.Projection>
+                <PlaneProjection RotationY="0" />
+            </Grid.Projection>
+
+            <triggers:Interaction.Triggers>
+                <triggers:PropertyChangedTrigger Binding="{Binding Angle}">
+                    <triggers:StartStoryboardAction Storyboard="{StaticResource Rotate}"/>
+                </triggers:PropertyChangedTrigger>
+            </triggers:Interaction.Triggers>
+        </Grid>
+    </Grid>
+</Page>
