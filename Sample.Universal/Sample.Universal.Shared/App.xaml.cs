@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using Sample.Universal.ViewModels;
+using Sample.Universal.Views;
+using XamlActions.ViewServices;
 
 namespace Sample.Universal
 {
@@ -103,6 +106,8 @@ namespace Sample.Universal
 
             // Ensure the current window is active
             Window.Current.Activate();
+
+            Navigator.RegisterView(ViewKeys.Detail, typeof(DetailPage));
         }
 
 #if WINDOWS_PHONE_APP

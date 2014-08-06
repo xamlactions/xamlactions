@@ -8,7 +8,9 @@
     xmlns:actions="using:XamlActions.Actions"
     xmlns:triggers="using:XamlActions.Triggers"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
+    >
     <Page.Resources>
         <Storyboard x:Name="Rotate">
             <DoubleAnimation Duration="0:0:0.5" 
@@ -19,9 +21,15 @@
         </Storyboard>
     </Page.Resources>
     <Grid>
-        <Button Content="rotate" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Button Content="rotate" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,100">
             <actions:Events.Mappings>
-                <actions:Map Event="PointerExited" ToMethod="Rotate" />
+                <actions:Map Event="Click" ToMethod="Rotate" />
+            </actions:Events.Mappings>
+        </Button>
+        
+        <Button Content="go to detail" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150">
+            <actions:Events.Mappings>
+                <actions:Map Event="Click" ToMethod="GoToDetail" />
             </actions:Events.Mappings>
         </Button>
         <Grid x:Name="ControlToRotate" Width="200" Height="200">
