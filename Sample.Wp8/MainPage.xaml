@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:actions="clr-namespace:XamlActions.Actions;assembly=XamlActions.Wp8"
+    xmlns:triggers="clr-namespace:XamlActions.Triggers;assembly=XamlActions.Wp8"
+
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -15,9 +17,17 @@
     shell:SystemTray.IsVisible="True"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
     >
-
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="Rotate">
+            <DoubleAnimation Duration="0:0:0.5" 
+							 To="{Binding Angle}" 
+							 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" 
+							 Storyboard.TargetName="ControlToRotate" 
+							 d:IsOptimized="True"/>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="Transparent" Tag="Foo">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -30,7 +40,6 @@
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="TextTitle" Text="XamlActions" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
             <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="12,0,12,0">
@@ -46,6 +55,33 @@
                                  WithParam="{Binding}"/>
                 </actions:Events.Mappings>
             </Button>
+            <Button Content="rotate" >
+                <actions:Events.Mappings>
+                    <actions:Map Event="Click" ToMethod="Rotate" />
+                </actions:Events.Mappings>
+            </Button>
+
+            <Grid x:Name="ControlToRotate" Width="200" Height="200">
+                <Rectangle Width="100" Height="100" Fill="Blue" HorizontalAlignment="Left"/>
+                <Rectangle Width="100" Height="100" Fill="Red" HorizontalAlignment="Right"/>
+
+                <Grid.RenderTransform>
+                    <CompositeTransform Rotation="0" CenterX="50" CenterY="50"/>
+                </Grid.RenderTransform>
+
+                <Grid.Projection>
+                    <PlaneProjection RotationY="0" />
+                </Grid.Projection>
+
+                <triggers:Interaction.Triggers>
+                    <triggers:TriggersCollection>
+                        <triggers:PropertyChangedTrigger Binding="{Binding Angle}">
+                            <triggers:StartStoryboardAction Storyboard="{StaticResource Rotate}" />
+                        </triggers:PropertyChangedTrigger>
+                    </triggers:TriggersCollection>
+                </triggers:Interaction.Triggers>
+            </Grid>
+
         </StackPanel>
 
     </Grid>

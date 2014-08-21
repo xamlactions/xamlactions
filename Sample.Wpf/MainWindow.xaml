@@ -8,14 +8,11 @@
         >
     <Grid>
         <Button Content="Doit" Height="80" x:Name="ButtonDoit">
-            <!--<actions:Events.Mappings>
+            <actions:Events.Mappings>
                  <actions:Map Event="Click" ToMethod="Doit"/>
-            </actions:Events.Mappings>-->
+            </actions:Events.Mappings>
             
-            <wpf:SuperTabs.Tabs>
-                <wpf:Tab Nome="{Binding Title}" />
-                <wpf:Tab Nome="Joe" />
-            </wpf:SuperTabs.Tabs>
+            
         </Button>
     </Grid>
 </Window>

@@ -81,6 +81,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\..\Sample.Common\Sample.Common.csproj">
+      <Project>{9d5dba6b-1d26-4bfd-b60a-425983dbc446}</Project>
+      <Name>Sample.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\XamlActions.Universal\XamlActions.Universal.csproj">
       <Project>{dbf23af7-495d-46a7-bd1c-cceae1c4be76}</Project>
       <Name>XamlActions.Universal</Name>

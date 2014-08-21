@@ -4,9 +4,9 @@ namespace Sample.Common.ViewModels {
     public class ViewModelLocator : ViewModelLocatorBase {
 
         public MainViewModel MainViewModel { get; set; }
+        public DetailViewModel DetailViewModel { get; set; }
 
         public override void CallFirst() {
-            MainViewModel = new MainViewModel();
         }
 
         public override void CallOnlyInRuntime() {
@@ -16,6 +16,8 @@ namespace Sample.Common.ViewModels {
         }
 
         public override void CallLast() {
+            MainViewModel = new MainViewModel();
+            DetailViewModel = new DetailViewModel();
         }
     }
 }

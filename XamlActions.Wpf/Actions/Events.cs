@@ -10,7 +10,6 @@ using XamlActions.Reflection;
 
 namespace XamlActions.Actions {
     public class Events : ObservableCollection<Map> {
-
         public FrameworkElement ParentFrameworkElement { get; set; }
 
         public static readonly DependencyProperty MappingsProperty = DependencyProperty.RegisterAttached(

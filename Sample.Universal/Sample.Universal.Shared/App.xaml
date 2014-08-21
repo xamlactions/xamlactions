@@ -2,9 +2,8 @@
     x:Class="Sample.Universal.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Sample.Universal"
-    xmlns:viewModels="using:Sample.Universal.ViewModels">
+    xmlns:viewModels1="using:Sample.Common.ViewModels">
     <Application.Resources>
-        <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
+        <viewModels1:ViewModelLocator x:Key="ViewModelLocator"/>
     </Application.Resources>
 </Application>

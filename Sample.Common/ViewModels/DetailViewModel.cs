@@ -1,6 +1,6 @@
 ﻿using XamlActions;
 
-namespace Sample.Universal.ViewModels {
+namespace Sample.Common.ViewModels {
     public class DetailViewModel : ViewModelBase {
         
     }
