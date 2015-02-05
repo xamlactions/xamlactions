@@ -6,13 +6,18 @@
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}"
         >
-    <Grid>
+    <StackPanel>
         <Button Content="Doit" Height="80" x:Name="ButtonDoit">
             <actions:Events.Mappings>
-                 <actions:Map Event="Click" ToMethod="Doit"/>
+                <actions:Map Event="Click" ToMethod="Doit" />
             </actions:Events.Mappings>
-            
-            
         </Button>
-    </Grid>
+        <Button Content="DoitWithParameter" Height="80">
+            <actions:Events.Mappings>
+                <actions:Map Event="Click" 
+                                 ToMethod="DoitWithParam" 
+                                 WithParam="{Binding Angle}"/>
+            </actions:Events.Mappings>
+        </Button>
+    </StackPanel>
 </Window>

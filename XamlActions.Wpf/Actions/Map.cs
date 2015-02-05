@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
 namespace XamlActions.Actions {
-    public class Map : FrameworkElement {
+    public class Map : Freezable {
         public string Event { get; set; }
         public string ToMethod { get; set; }
         public bool SendingEventArgs { get; set; }
@@ -48,6 +48,10 @@ namespace XamlActions.Actions {
 
         public static void SetOfDataContext(DependencyObject dependencyObject, string value) {
             dependencyObject.SetValue(OfDataContextProperty, value);
+        }
+
+        protected override Freezable CreateInstanceCore() {
+            throw new System.NotImplementedException();
         }
     }
 }

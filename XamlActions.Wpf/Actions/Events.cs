@@ -1,30 +1,62 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using XamlActions.Reflection;
+using XamlActions.ViewServices;
 
 namespace XamlActions.Actions {
-    public class Events : ObservableCollection<Map> {
+    public class Events : FreezableCollection<Map> {
         public FrameworkElement ParentFrameworkElement { get; set; }
+        public List<Map> Maps { get; private set; }
 
-        public static readonly DependencyProperty MappingsProperty = DependencyProperty.RegisterAttached(
-            "MappingsInternal",
-            typeof(Events),
-            typeof(Events),
-            new FrameworkPropertyMetadata());
+        public Events() {
+            Maps = new List<Map>();
+        }
 
-        public static Events GetMappings(DependencyObject obj) {
-            var eventsCollection = obj.GetValue(MappingsProperty) as Events;
+        static Events() {
+            try {
+                MappingsProperty =
+                DependencyProperty.RegisterAttached(
+                    "MappingsInternal123",
+                    typeof(Events),
+                    typeof(DependencyObject),
+                    new PropertyMetadata(OnX));
+                
+            }
+            catch{}
+        }
+
+        public static readonly DependencyProperty MappingsProperty;
+
+        private static void OnX(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+        }
+
+        public static Events GetMappings(DependencyObject element) {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) {
+                return new Events();
+            }
+            var eventsCollection = element.GetValue(MappingsProperty) as Events;
             if (eventsCollection == null) {
                 eventsCollection = new Events();
-                SetMappings(obj, eventsCollection);
+                eventsCollection.Changed += EventsCollectionOnChanged;
+                SetMappings(element, eventsCollection);
             }
             return eventsCollection;
+        }
+
+        private static void EventsCollectionOnChanged(object sender, EventArgs eventArgs) {
+            var events = sender as Events;
+            if (events == null) {
+                return;
+            }
+            var newItems = events.TakeWhile(x => !events.Maps.Contains(x));
+            var oldItems = events.Maps.TakeWhile(x => !events.Contains(x));
+
+            events.RegisterEventToMaps(newItems.ToList());
+            events.UnregisterEventFromMaps(oldItems);
         }
 
         public static void SetMappings(DependencyObject obj, Events events) {
@@ -36,16 +68,6 @@ namespace XamlActions.Actions {
             events.ParentFrameworkElement = element;
         }
 
-        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e) {
-            base.OnCollectionChanged(e);
-            if (e.NewItems != null && e.NewItems.Count > 0) {
-                RegisterEventToMaps(e.NewItems.Cast<Map>().ToList());
-            }
-            if (e.OldItems != null && e.OldItems.Count > 0) {
-                UnregisterEventFromMaps(e.OldItems);
-            }
-        }
-
         private void RegisterEventToMaps(IEnumerable<Map> maps) {
             if (maps == null) return;
             foreach (Map map in maps) {
@@ -54,7 +76,7 @@ namespace XamlActions.Actions {
             }
         }
 
-        private void UnregisterEventFromMaps(IList maps) {
+        private void UnregisterEventFromMaps(IEnumerable<Map> maps) {
             if (maps == null) return;
             foreach (Map map in maps) {
                 Map localMap = map;
@@ -64,7 +86,7 @@ namespace XamlActions.Actions {
 
         public void EventFired(Map map, object eventArgs) {
             if (map == null) return;
-            map.DataContext = ParentFrameworkElement.DataContext;
+            //map.DataContext = ParentFrameworkElement.DataContext;
             object dataContext = GetDataContext(map, ParentFrameworkElement);
             string methodName = map.ToMethod;
             CallMethod(map, dataContext, methodName, eventArgs);
@@ -72,7 +94,9 @@ namespace XamlActions.Actions {
 
         private static object GetDataContext(Map map, DependencyObject dependencyObject) {
             if (map.OfDataContext == null && !(dependencyObject is FrameworkElement)) {
-                throw new NotSupportedException("When not a framework element, you must set the parameter OfDataContext. Error trying to map event [" + map.Event + "] to method [" + map.ToMethod + "]. Object: " + dependencyObject);
+                throw new NotSupportedException(
+                    "When not a framework element, you must set the parameter OfDataContext. Error trying to map event [" +
+                    map.Event + "] to method [" + map.ToMethod + "]. Object: " + dependencyObject);
             }
             return map.OfDataContext ?? dependencyObject.GetValue(FrameworkElement.DataContextProperty);
         }
